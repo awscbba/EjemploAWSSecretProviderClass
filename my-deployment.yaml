@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      serviceAccountName: my-asm-service-account
+      volumes:
+      - name: secrets-store-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "nginx-deployment-aws-secrets"
+      containers:
+      - name: my-app
+        image: public.ecr.aws/nginx/nginx:latest
+        ports:
+        - containerPort: 80
+        env:
+          - name: NGINX_PORT
+            value: "80"
+          - name: DB_USERNAME_01
+            valueFrom:
+              secretKeyRef:
+                name: credentials
+                key: user
+          - name: DB_PASSWORD_01
+            valueFrom:
+              secretKeyRef:
+                name: credentials
+                key: password
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        volumeMounts:
+        - name: secrets-store-inline
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
