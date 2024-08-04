@@ -6,7 +6,7 @@ Este es un ejemplo de cómo otorgar acceso de los secretos guardados en AWS Secr
 
 ## Ambiente de desarrollo
 
-Para facilitar el desarrollo hemos usado (Devbox)[https://www.jetify.com/devbox/docs/].
+Para facilitar el desarrollo hemos usado [Devbox](https://www.jetify.com/devbox/docs/).
 
 #### Configurar Devbox
 

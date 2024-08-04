@@ -5,7 +5,7 @@ This is an example of how to grant access secrets from AWS Secrets Manager to EK
 
 ## Development Environment
 
-To facilitate the development we have used (Devbox)[https://www.jetify.com/devbox/docs/].
+To facilitate the development we have used [Devbox](https://www.jetify.com/devbox/docs/).
 
 #### Configure Devbox
 
