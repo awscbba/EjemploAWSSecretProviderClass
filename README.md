@@ -100,13 +100,13 @@ eksctl create iamserviceaccount --name my-asm-service-account --namespace defaul
 Confirm that the IAM role's trust policy is configured correctly.
 
 ```sh
-aws iam get-role --role-name my-role --query Role.AssumeRolePolicyDocument
+aws iam get-role --role-name my-asm-role --query Role.AssumeRolePolicyDocument
 ```
 
 Confirm that the policy that you attached to your role in a previous step is attached to the role.
 
 ```sh
-aws iam list-attached-role-policies --role-name my-role --query AttachedPolicies[].PolicyArn --output text
+aws iam list-attached-role-policies --role-name my-asm-role --query AttachedPolicies[].PolicyArn --output text
 ```
 Note: I couldn't make this work id shows nothing.
 

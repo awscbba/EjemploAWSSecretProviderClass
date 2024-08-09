@@ -101,13 +101,13 @@ eksctl create iamserviceaccount --name my-asm-service-account --namespace defaul
 Confirmar que la política de confianza del rol en IAM está configurada correctamente.
 
 ```sh
-aws iam get-role --role-name my-role --query Role.AssumeRolePolicyDocument
+aws iam get-role --role-name my-asm-role --query Role.AssumeRolePolicyDocument
 ```
 
 Confirmar que la política que agregaste a tu rol en el paso previo está agregada al rol.
 
 ```sh
-aws iam list-attached-role-policies --role-name my-role --query AttachedPolicies[].PolicyArn --output text
+aws iam list-attached-role-policies --role-name my-asm-role --query AttachedPolicies[].PolicyArn --output text
 ```
 Nota: No he podido hacer funcionar éste paso correctamente.
 
